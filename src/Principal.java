@@ -21,6 +21,9 @@ public class Principal extends javax.swing.JFrame {
      * Creates new form Principal
      */
     public Principal() {
+        
+        super("Funcionario");
+        
         initComponents();
     }
 
@@ -223,7 +226,7 @@ public class Principal extends javax.swing.JFrame {
         funCLT.setSalarioBase(Double.parseDouble(salarioBaseTextField.getText()));
         funCLT.setHoraExtra(Integer.parseInt(salarioBaseTextField.getText()));
         
-        JOptionPane.showMessageDialog(null, funCLT.getInfoGeral());
+        JOptionPane.showMessageDialog(null, funCLT.getInfoGeral()+"\nBeneficio:\n"+funCLT.getBeneficios());
         
     }//GEN-LAST:event_funCLTButtonActionPerformed
 
@@ -233,6 +236,9 @@ public class Principal extends javax.swing.JFrame {
         funcPJButton.setEnabled(false);
         valorContratoTextField.setEnabled(false);
         cnpjTextField.setEnabled(false);
+        salarioBaseTextField.setEnabled(true); 
+        salarioBaseTextField.setText("");
+
         
     }//GEN-LAST:event_funcCLTRadioButtonActionPerformed
 
@@ -241,6 +247,8 @@ public class Principal extends javax.swing.JFrame {
         funcPJButton.setEnabled(true);
         valorContratoTextField.setEnabled(true);
         cnpjTextField.setEnabled(true);
+        salarioBaseTextField.setText("0");
+        salarioBaseTextField.setEnabled(false);
     }//GEN-LAST:event_funcPJRadioButtonActionPerformed
 
     private void funcPJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_funcPJButtonActionPerformed
@@ -253,6 +261,9 @@ public class Principal extends javax.swing.JFrame {
         funcPJ.setMatricula(matriculaTextField.getText());
         funcPJ.setDataAdmissao(LocalDate.parse(dataAdmissaoTextField.getText(), formato));
         funcPJ.setCnpj(cnpjTextField.getText());
+        funcPJ.setValorContrato(Double.parseDouble(valorContratoTextField.getText()));
+        
+        JOptionPane.showMessageDialog(null, funcPJ.getInfoGeral()+"\nBeneficios:\n"+funcPJ.getBeneficios());
 
     }//GEN-LAST:event_funcPJButtonActionPerformed
 

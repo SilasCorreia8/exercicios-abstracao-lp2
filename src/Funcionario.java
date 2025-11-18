@@ -62,10 +62,11 @@ public abstract class Funcionario {
     public String getInfoGeral() {
         
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-        return String.format("%s: %s \n%s: %s \n%s: %s", 
+        return String.format("%s: %s \n%s: %s \n%s: %s \n%s: %.2f", 
                 "Nome", nome,
                 "Matricula", matricula,
-                "Data de Admissao", dataAdmissao.format(formatter));
+                "Data de Admissao", dataAdmissao.format(formatter),
+                "Salario Base", salarioBase);
     }
     
     
