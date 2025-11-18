@@ -1,6 +1,7 @@
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.Locale;
 import javax.swing.JOptionPane;
 
 /*
@@ -33,6 +34,7 @@ public class Principal extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel7 = new javax.swing.JLabel();
+        buttonGroup1 = new javax.swing.ButtonGroup();
         jLabel1 = new javax.swing.JLabel();
         nomeTextField = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
@@ -45,11 +47,14 @@ public class Principal extends javax.swing.JFrame {
         horaExtraTextField = new javax.swing.JTextField();
         valorHoraExtraTextField = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
-        aplicarButton = new javax.swing.JButton();
+        funCLTButton = new javax.swing.JButton();
         jLabel8 = new javax.swing.JLabel();
         cnpjTextField = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
         valorContratoTextField = new javax.swing.JTextField();
+        funcCLTRadioButton = new javax.swing.JRadioButton();
+        funcPJRadioButton = new javax.swing.JRadioButton();
+        funcPJButton = new javax.swing.JButton();
 
         jLabel7.setText("jLabel7");
 
@@ -67,16 +72,45 @@ public class Principal extends javax.swing.JFrame {
 
         jLabel6.setText("Hora Extra (valor):");
 
-        aplicarButton.setText("Aplicar");
-        aplicarButton.addActionListener(new java.awt.event.ActionListener() {
+        funCLTButton.setText("CLT");
+        funCLTButton.setEnabled(false);
+        funCLTButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                aplicarButtonActionPerformed(evt);
+                funCLTButtonActionPerformed(evt);
             }
         });
 
         jLabel8.setText("CNPJ:");
 
+        cnpjTextField.setEnabled(false);
+
         jLabel9.setText("Valor Contrato:");
+
+        valorContratoTextField.setEnabled(false);
+
+        buttonGroup1.add(funcCLTRadioButton);
+        funcCLTRadioButton.setText("Funcionario CLT");
+        funcCLTRadioButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                funcCLTRadioButtonActionPerformed(evt);
+            }
+        });
+
+        buttonGroup1.add(funcPJRadioButton);
+        funcPJRadioButton.setText("Funcionario PJ");
+        funcPJRadioButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                funcPJRadioButtonActionPerformed(evt);
+            }
+        });
+
+        funcPJButton.setText("PJ");
+        funcPJButton.setEnabled(false);
+        funcPJButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                funcPJButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -87,18 +121,28 @@ public class Principal extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(horaExtraTextField, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
-                                .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(nomeTextField, javax.swing.GroupLayout.Alignment.LEADING))
-                            .addComponent(jLabel5))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(jLabel2)
-                                .addComponent(matriculaTextField)
-                                .addComponent(valorHoraExtraTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE))
-                            .addComponent(jLabel6))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                        .addComponent(horaExtraTextField, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
+                                        .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(nomeTextField, javax.swing.GroupLayout.Alignment.LEADING))
+                                    .addComponent(jLabel5))
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(jLabel2)
+                                        .addComponent(matriculaTextField)
+                                        .addComponent(valorHoraExtraTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE))
+                                    .addComponent(jLabel6)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jLabel9)
+                                    .addComponent(valorContratoTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE))
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jLabel8)
+                                    .addComponent(cnpjTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
@@ -108,16 +152,16 @@ public class Principal extends javax.swing.JFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(dataAdmissaoTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addComponent(salarioBaseTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addComponent(aplicarButton)
+                                .addComponent(salarioBaseTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(funcPJRadioButton)
+                                    .addComponent(funcCLTRadioButton))
+                                .addGap(51, 51, 51))))
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel8)
-                            .addComponent(cnpjTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(funCLTButton, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jLabel9)
-                            .addComponent(valorContratoTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addComponent(funcPJButton, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -144,24 +188,30 @@ public class Principal extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(horaExtraTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(valorHoraExtraTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(valorHoraExtraTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(funcCLTRadioButton))
                         .addGap(18, 18, 18)
-                        .addComponent(jLabel8)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(cnpjTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel9)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(valorContratoTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel9)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(valorContratoTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel8)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(cnpjTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addComponent(funcPJRadioButton))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 55, Short.MAX_VALUE)
-                .addComponent(aplicarButton)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(funCLTButton)
+                    .addComponent(funcPJButton))
                 .addGap(37, 37, 37))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void aplicarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aplicarButtonActionPerformed
+    private void funCLTButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_funCLTButtonActionPerformed
 
         DateTimeFormatter formato = DateTimeFormatter.ofPattern("dd/MM/yyyy");
         
@@ -175,7 +225,36 @@ public class Principal extends javax.swing.JFrame {
         
         JOptionPane.showMessageDialog(null, funCLT.getInfoGeral());
         
-    }//GEN-LAST:event_aplicarButtonActionPerformed
+    }//GEN-LAST:event_funCLTButtonActionPerformed
+
+    private void funcCLTRadioButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_funcCLTRadioButtonActionPerformed
+
+        funCLTButton.setEnabled(true);
+        funcPJButton.setEnabled(false);
+        valorContratoTextField.setEnabled(false);
+        cnpjTextField.setEnabled(false);
+        
+    }//GEN-LAST:event_funcCLTRadioButtonActionPerformed
+
+    private void funcPJRadioButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_funcPJRadioButtonActionPerformed
+        funCLTButton.setEnabled(false);
+        funcPJButton.setEnabled(true);
+        valorContratoTextField.setEnabled(true);
+        cnpjTextField.setEnabled(true);
+    }//GEN-LAST:event_funcPJRadioButtonActionPerformed
+
+    private void funcPJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_funcPJButtonActionPerformed
+
+        DateTimeFormatter formato = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        
+        FuncionarioPJ funcPJ = new FuncionarioPJ("", "", "", 0.0);
+        
+        funcPJ.setNome(nomeTextField.getText());
+        funcPJ.setMatricula(matriculaTextField.getText());
+        funcPJ.setDataAdmissao(LocalDate.parse(dataAdmissaoTextField.getText(), formato));
+        funcPJ.setCnpj(cnpjTextField.getText());
+
+    }//GEN-LAST:event_funcPJButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -203,9 +282,13 @@ public class Principal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton aplicarButton;
+    private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JTextField cnpjTextField;
     private javax.swing.JTextField dataAdmissaoTextField;
+    private javax.swing.JButton funCLTButton;
+    private javax.swing.JRadioButton funcCLTRadioButton;
+    private javax.swing.JButton funcPJButton;
+    private javax.swing.JRadioButton funcPJRadioButton;
     private javax.swing.JTextField horaExtraTextField;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
