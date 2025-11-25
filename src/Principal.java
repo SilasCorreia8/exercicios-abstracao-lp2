@@ -58,6 +58,8 @@ public class Principal extends javax.swing.JFrame {
         funcCLTRadioButton = new javax.swing.JRadioButton();
         funcPJRadioButton = new javax.swing.JRadioButton();
         funcPJButton = new javax.swing.JButton();
+        limparButton = new javax.swing.JButton();
+        sairButton = new javax.swing.JButton();
 
         jLabel7.setText("jLabel7");
 
@@ -115,6 +117,20 @@ public class Principal extends javax.swing.JFrame {
             }
         });
 
+        limparButton.setText("Limpar");
+        limparButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                limparButtonActionPerformed(evt);
+            }
+        });
+
+        sairButton.setText("Sair");
+        sairButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                sairButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -164,7 +180,11 @@ public class Principal extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(funCLTButton, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(funcPJButton, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(funcPJButton, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(59, 59, 59)
+                        .addComponent(limparButton)
+                        .addGap(18, 18, 18)
+                        .addComponent(sairButton)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -207,7 +227,9 @@ public class Principal extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 55, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(funCLTButton)
-                    .addComponent(funcPJButton))
+                    .addComponent(funcPJButton)
+                    .addComponent(limparButton)
+                    .addComponent(sairButton))
                 .addGap(37, 37, 37))
         );
 
@@ -267,6 +289,25 @@ public class Principal extends javax.swing.JFrame {
 
     }//GEN-LAST:event_funcPJButtonActionPerformed
 
+    private void limparButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_limparButtonActionPerformed
+
+        nomeTextField.setText("");
+        matriculaTextField.setText("");
+        dataAdmissaoTextField.setText("");
+        salarioBaseTextField.setText("");
+        horaExtraTextField.setText("");
+        valorHoraExtraTextField.setText("");
+        valorContratoTextField.setText("");
+        cnpjTextField.setText("");
+
+    }//GEN-LAST:event_limparButtonActionPerformed
+
+    private void sairButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sairButtonActionPerformed
+
+        System.exit(0);
+
+    }//GEN-LAST:event_sairButtonActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -310,8 +351,10 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JButton limparButton;
     private javax.swing.JTextField matriculaTextField;
     private javax.swing.JTextField nomeTextField;
+    private javax.swing.JButton sairButton;
     private javax.swing.JTextField salarioBaseTextField;
     private javax.swing.JTextField valorContratoTextField;
     private javax.swing.JTextField valorHoraExtraTextField;
